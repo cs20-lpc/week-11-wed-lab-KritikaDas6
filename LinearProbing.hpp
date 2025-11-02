@@ -14,6 +14,7 @@ public:
         // TODO: Implement linear probing with skip
         // return 0;
 
-        return (this->hash1(key) + i * skip) % this->M;
+  
+       return (key % this->M + i * skip) % this->M;
     }
 };

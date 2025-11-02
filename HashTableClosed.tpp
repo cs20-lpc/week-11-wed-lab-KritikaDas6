@@ -7,13 +7,16 @@ int HashTableClosed<T>::insert(const T& key)
         probes++;
         int idx = probeIndex(key, i);
         if (!occupied[idx]){
+
+            occupied[idx] = true;
             table[idx] = key;
+        
             N++;
             return probes;
         }
     }
 
-    return 0;
+    return probes;
 }
 
 template <typename T>
@@ -33,5 +36,5 @@ pair<bool, int> HashTableClosed<T>::search(const T& key) const
         }   
     }
 
-    return {false, 0};
+    return {false, probes};
 }
